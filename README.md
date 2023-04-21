@@ -36,10 +36,41 @@ SpringBoot Learning
 [解决方案参考](https://blog.csdn.net/GLepoch/article/details/113485608)
 
 
+
+### @profile.active@无法识别的问题
+原因：application.yml中无法识别@符号引用maven的标签
+解决：`pom.xml`中增加一个插件 `maven-resources-plugin`
+[解决方法参考](https://blog.csdn.net/AdminPwd/article/details/96966359)
 ### 习惯
 service层：Login(String name,String password)
 dao层：selectByNameAndPassword(String name,String password)
 
+### maven切换profile无法生效
+原因：切换了<activeByDefault>标签的默认值，但运行起来仍然是以前的值
+解决： 重启invalidate caches and restart 或者 重新compile一下
 
 ### 答疑
 @RequestBody是适用于异步请求，将数据放在请求体中，格式为json
+
+
+
+### 单体部署项目要点
+
+- mvn package 打包项目
+- 启动命名`your/path/to/bin/java -jar your/path/to/project.jar `
+- 如果不跳过maven test 项目会多一些数据，如果你不介意无所谓
+- 覆盖配置属性`java -jar project.jar --server.port=81`
+- 禁用参数启动 `SpringApplication.run(SsmApplication.class)` ,去掉args
+- 多个配置文件，springBoot会读取并集，一起奏效
+- 四级配置文件对于不同的角色
+  1. classpath: application.yml 开发
+  2. classpath: config/application.yml 开发管理
+  3. 服务器某个目录: 运维
+  4. 服务器最高目录： 运维管理
+- 指定配置文件名启动的参数 `--spring.config.name=application` 指定路径`--spring.config.location=classpath:/application.yml`
+- 单文件配置多环境 注意使用的是`spring.profile.active.on-profile: pro`, 子环境中配置的是`spring.profile.active: pro`
+- 多环境配置为多文件 名称规范 `application-dev.yml` 主配置`spring.profiles.active: dev` dev配置文件`spring.config.activate.on-profile: - dev`
+
+**maven 作为主配置 springBoot 读取配置**
+- maven标签 `<profiles></profiles>`并在`application.yml`中读取`@profile.active@`
+- 注意引用插件 `maven-resource-plugin`来识别`@ @`
