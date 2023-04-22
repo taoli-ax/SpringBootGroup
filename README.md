@@ -74,3 +74,16 @@ dao层：selectByNameAndPassword(String name,String password)
 **maven 作为主配置 springBoot 读取配置**
 - maven标签 `<profiles></profiles>`并在`application.yml`中读取`@profile.active@`
 - 注意引用插件 `maven-resource-plugin`来识别`@ @`
+
+
+
+**@self4j**
+- 加在需要日志的类上
+- 自定义日志格式和颜色`logging.partten.console: "%d %clr(%5p) --- [%clr(%16t){blue}] %clr(%-40.40c){cyan} : %m %n"`
+- %p 日志级别， %t线程， %clr设置颜色%， {blue}设置为蓝色， -40.40c左对齐类名占用40位并截取40位，%n换行符
+
+### 基础功能和基础运维配置完结！
+
+---
+以下将学习更多开发类的知识
+

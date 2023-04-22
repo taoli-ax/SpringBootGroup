@@ -5,6 +5,8 @@ import com.coh.ssm.pojo.Cup;
 import com.coh.ssm.service.CupService;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Insert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/cups")
 public class CupController {
+    //
+    private static final Logger log= LoggerFactory.getLogger(CupController.class);
 
     @Autowired
     private CupService cupService;

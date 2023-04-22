@@ -22,3 +22,30 @@ pagehelper:
 
 server:
   port: 81
+
+
+logging:
+  group:
+    dao: "com.coh.ssm.dao"
+    service: "com.coh.ssm.service"
+
+  level:
+    root: "info"
+    service: "warn"
+
+  pattern:
+    console: "%d %clr(%5p) --- [%clr(%16t){blue}] %clr(%-40.40c){cyan} : %m %n"
+
+
+  file:
+    name: "server.log"
+    path: /
+
+  logback:
+    rollingpolicy:
+      file-name-pattern: "server.%d{yyyy--mm--dd}.%i.log"
+      max-file-size: "4KB"
+
+
+
+
