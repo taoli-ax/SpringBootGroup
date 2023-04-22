@@ -2,6 +2,9 @@
 spring:
   banner:
       location: classpath:static/img/banner.txt
+  thymeleaf:
+    prefix: "classpath:/templates/"
+    suffix: .html
 
   devtools:
     restart:
