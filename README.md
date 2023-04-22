@@ -131,3 +131,33 @@ public class SsmApplication {
 
 
 
+### Filter 配置类方式
+
+1. 写一个配置类
+```java
+
+public class FilterDemo implements Filter {
+        // implement methods
+}
+```
+2. 用FilterRegistrationBean加载Filter配置类到spring
+```java
+@Configuration
+public class FilterConfig {
+    @Bean
+    public FilterRegistrationBean<FilterDemo> RegistrationBean() {
+        FilterRegistrationBean<FilterDemo> registrationBean = new FilterRegistrationBean<>();
+        registrationBean.setName("filterDemo");
+        //设置其他属性，最后返回
+        return registrationBean;
+    }
+}
+
+```
+
+### Interceptor配置类
+1. 写一个拦截器`MyInterceptor` 完成接口`HandlerInterceptor`
+2. 写一个拦截器配置类 `InterceptorConfig` 完成接口 `WebMvcConfigurer`
+3. 重写方法`addInterceptors(InterceptorRegistry registry)`完成拦截路径配置
+
+so easy
