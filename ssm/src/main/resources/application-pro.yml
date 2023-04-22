@@ -1,5 +1,13 @@
 # development
 spring:
+  banner:
+      location: classpath:static/img/banner.txt
+
+  devtools:
+    restart:
+      enabled: true
+      additional-path: src/main/java
+
   config:
     activate:
       on-profile:
@@ -22,6 +30,7 @@ pagehelper:
 
 server:
   port: 81
+  shutdown: "graceful"
 
 
 logging:
@@ -37,9 +46,6 @@ logging:
     console: "%d %clr(%5p) --- [%clr(%16t){blue}] %clr(%-40.40c){cyan} : %m %n"
 
 
-  file:
-    name: "server.log"
-    path: /
 
   logback:
     rollingpolicy:

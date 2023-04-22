@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.*;
 
 
 import java.util.List;
-@Mapper
+//@Mapper
 public interface CupDao {
     @Select("select * from cup")
     List<Cup> findAll();
@@ -18,4 +18,6 @@ public interface CupDao {
 
     @Insert("insert into cup values(null,#{name},#{brand})")
     int create(Cup cup);
+
+    int  MapperScan();
 }

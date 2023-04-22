@@ -25,6 +25,11 @@ public class CupController {
     @PostMapping("/pageNation1/{PageNum}/{PageSize}")
     public Result PageNation1(@PathVariable("PageNum") Integer PageNum,@PathVariable("PageSize") Integer PageSize){
         PageInfo<Cup> cupPageInfo=cupService.findByPageInfo(PageNum,PageSize);
+        System.out.println("Controller hot deploy active!");
+        System.out.println("Controller hot deploy active!");
+        System.out.println("Controller hot deploy active!");
+        System.out.println("Controller hot deploy active!");
+        System.out.println("Controller hot deploy active!");
         if(cupPageInfo!=null){
             return new Result(true,cupPageInfo,"OK");
         }else {

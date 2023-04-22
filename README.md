@@ -87,3 +87,5 @@ dao层：selectByNameAndPassword(String name,String password)
 ---
 以下将学习更多开发类的知识
 
+###  集成任意第三方类，使用JavaConfig @Bean来配置
+
