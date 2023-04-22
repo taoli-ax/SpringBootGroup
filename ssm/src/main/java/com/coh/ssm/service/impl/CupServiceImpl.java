@@ -34,6 +34,7 @@ public class CupServiceImpl implements CupService {
 
     @Override
     public PageInfo<Cup> findByPageInfo(int PageNum, int PageSize) {
+        System.out.println(" service hot deploy active!");
         PageHelper.startPage(PageNum,PageSize);
         List<Cup> cups=cupDao.findAll();
         return new PageInfo<>(cups);
@@ -52,6 +53,11 @@ public class CupServiceImpl implements CupService {
     @Override
     public int create(Cup cup) {
         return cupDao.create(cup);
+    }
+
+    @Override
+    public int MapperScan() {
+        return cupDao.MapperScan();
     }
 
 }

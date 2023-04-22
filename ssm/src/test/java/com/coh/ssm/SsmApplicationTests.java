@@ -29,4 +29,10 @@ class SsmApplicationTests {
     }
 
 
+    @Test
+    void countMapperConfigScanTest(){
+        int i =cupService.MapperScan();
+        System.out.println(i);
+    }
+
 }

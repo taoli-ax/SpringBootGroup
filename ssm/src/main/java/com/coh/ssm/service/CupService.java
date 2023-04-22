@@ -21,5 +21,7 @@ public interface CupService {
 
     int create(Cup cup);
 
+    int MapperScan();
+
 
 }
