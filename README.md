@@ -89,3 +89,45 @@ dao层：selectByNameAndPassword(String name,String password)
 
 ###  集成任意第三方类，使用JavaConfig @Bean来配置
 
+
+### 没有文档就没有收获，一堆代码是无法直接了解做了什么的
+
+**Mybatis 两种写法**
+
+- annotation写法在Dao接口上@Mapper
+```java
+@Mapper
+public interface CupDao{
+   // your code here
+  @Select("select count(*) from cup")
+  int Count();
+}
+```
+
+- 配置文件写法，除了写好接口`java.com.coh.ssm.CupDao`和Mapper对象的配置文件`resource/com/coh/ssm/CupDao.xml`，注意路径保持一致否则找不到
+- 另外启动类上注解扫描`@MapperScan(basePackages = {"com.coh.ssm.dao"})`
+```java
+
+@MapperScan(basePackages = {"com.coh.ssm.dao"})
+public class SsmApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SsmApplication.class, args);
+    }
+
+}
+```
+
+
+### 热部署 IDEA CE
+
+- 勾选在File-setting-AdvanceSetting-Allow：auto-make start even if developed app is running
+- 勾选 File-setting-Compiler: Build project automatically
+- `pom.xml`添加配置 `spring-boot-devtools` 插件
+
+
+
+### banner.txt 启动字符输出配置
+
+
+
