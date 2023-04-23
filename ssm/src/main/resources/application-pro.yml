@@ -1,5 +1,9 @@
 # development
 spring:
+  mvc:
+    pathmatch:
+      # spring boot 2.6 PathPatternMatcher
+      matching-strategy: ANT_PATH_MATCHER
   banner:
       location: classpath:static/img/banner.txt
   thymeleaf:

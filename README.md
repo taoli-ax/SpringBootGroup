@@ -49,6 +49,13 @@ dao层：selectByNameAndPassword(String name,String password)
 原因：切换了<activeByDefault>标签的默认值，但运行起来仍然是以前的值
 解决： 重启invalidate caches and restart 或者 重新compile一下
 
+
+### swagger 配置无法生效
+原因： springBoot 版本2.6以后   
+解决方案：添加配置`spring.mvc.pathmatch.matching-strategy=ant_path_matcher`  
+版本成功匹配： springBoot 2.7.10,swagger:2.9.2  
+[解决方案连接](https://cloud.tencent.com/developer/article/2013127)
+
 ### 答疑
 @RequestBody是适用于异步请求，将数据放在请求体中，格式为json
 
@@ -161,3 +168,8 @@ public class FilterConfig {
 3. 重写方法`addInterceptors(InterceptorRegistry registry)`完成拦截路径配置
 
 so easy
+
+
+
+### 刚说so easy,接着就打脸的swagger配置，已经花了1天时间，但还没弄好
+# 见 bug fix
