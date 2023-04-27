@@ -4,6 +4,8 @@ import com.coh.ssm.exception.MyCustomException;
 import com.coh.ssm.pojo.Cup;
 import com.coh.ssm.service.CupService;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import org.apache.ibatis.annotations.Insert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,14 +24,12 @@ public class CupController {
     private CupService cupService;
 
 
-    @PostMapping("/pageNation1/{PageNum}/{PageSize}")
+    @GetMapping("/pageNation1/{PageNum}/{PageSize}")
     public Result PageNation1(@PathVariable("PageNum") Integer PageNum,@PathVariable("PageSize") Integer PageSize){
+        System.out.println("CupController.PageNation1"+PageNum+","+PageSize);
         PageInfo<Cup> cupPageInfo=cupService.findByPageInfo(PageNum,PageSize);
         System.out.println("Controller hot deploy active!");
-        System.out.println("Controller hot deploy active!");
-        System.out.println("Controller hot deploy active!");
-        System.out.println("Controller hot deploy active!");
-        System.out.println("Controller hot deploy active!");
+
         if(cupPageInfo!=null){
             return new Result(true,cupPageInfo,"OK");
         }else {
@@ -70,7 +70,7 @@ public class CupController {
 
     @DeleteMapping("/{id}")
     public int delete(@PathVariable("id") int id) throws Exception {
-        if(1>0)throw new Exception();
+        System.out.println("CupController.delete");
         return cupService.delete(id);
     }
 

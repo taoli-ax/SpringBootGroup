@@ -40,7 +40,7 @@ const app = Vue.createApp({
       })
     },
     PageNation(PageNum=1,PageSize=5){
-        axios.post(`/cups/pageNation1/${PageNum}/${PageSize}`)
+        axios.get(`/cups/pageNation1/${PageNum}/${PageSize}`)
           .then(response=> {
           this.totalPage=response.data.data.pages;
           this.currentPage=response.data.data.pageNum;
