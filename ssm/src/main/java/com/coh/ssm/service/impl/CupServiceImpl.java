@@ -27,9 +27,11 @@ public class CupServiceImpl implements CupService {
     }
 
     @Override
-    public List<Cup> findByPage(int PageNum, int PageSize) {
+    public PageInfo<Cup> Search(int PageNum, int PageSize,Cup cup) {
         PageHelper.startPage(PageNum,PageSize);
-        return cupDao.findAll();
+        List<Cup> cups=cupDao.Search(cup);
+        return new PageInfo<>(cups);
+
     }
 
     @Override

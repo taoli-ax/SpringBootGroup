@@ -11,13 +11,15 @@ public interface CupDao {
     List<Cup> findAll();
     @Select("select * from cup where brand=#{brand} and name=#{name} ")
     Cup findById(Cup cup);
-    @Update("update cup set name=#{name},brand=#{brand} where id=#{id}")
+    @Update("update cup set name=#{name},brand=#{brand},avatar=#{avatar} where id=#{id}")
     int update(Cup cup);
     @Delete("delete from cup where id=#{id}")
     int delete(int id);
 
-    @Insert("insert into cup values(null,#{name},#{brand})")
+    @Insert("insert into cup values(null,#{name},#{brand},#{avatar})")
     int create(Cup cup);
 
     int  MapperScan();
+
+    List<Cup> Search(Cup cup);
 }

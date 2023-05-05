@@ -26,6 +26,7 @@ public class CupController {
 
     @GetMapping("/pageNation1/{PageNum}/{PageSize}")
     public Result PageNation1(@PathVariable("PageNum") Integer PageNum,@PathVariable("PageSize") Integer PageSize){
+
         System.out.println("CupController.PageNation1"+PageNum+","+PageSize);
         PageInfo<Cup> cupPageInfo=cupService.findByPageInfo(PageNum,PageSize);
         System.out.println("Controller hot deploy active!");
@@ -36,11 +37,21 @@ public class CupController {
             return new Result(false,null,"NOK");
         }
     }
+    @PostMapping("/pageNation2/{PageNum}/{PageSize}")
+    public Result PageNation2(@PathVariable("PageNum") Integer PageNum,@PathVariable("PageSize") Integer PageSize,Cup cup){
 
-    @PostMapping("/pageNation2")
-    public List<Cup> PageNation2(int PageNum, int PageSize){
-        return cupService.findByPage(PageNum,PageSize);
+        System.out.println("CupController.PageNation1"+PageNum+","+PageSize+" cup:"+cup);
+        PageInfo<Cup> cupPageInfo=cupService.Search(PageNum,PageSize,cup);
+        System.out.println("Controller hot deploy active!");
+
+        if(cupPageInfo!=null){
+            return new Result(true,cupPageInfo,"OK");
+        }else {
+            return new Result(false,null,"NOK");
+        }
+//        return null;
     }
+
 
     @GetMapping("/{name}/{brand}")
     public Result FindById(Cup cup){
@@ -59,19 +70,20 @@ public class CupController {
     }
 
     @PutMapping
-    public int Update(@RequestBody Cup cup){
-        return cupService.update(cup);
+    public Result Update(@RequestBody Cup cup){
+        return new Result(true,cupService.update(cup),"OK");
     }
 
     @PostMapping
     public int create(@RequestBody Cup cup){
+        System.out.println(cup.toString());
         return cupService.create(cup);
     }
 
     @DeleteMapping("/{id}")
-    public int delete(@PathVariable("id") int id) throws Exception {
+    public Result delete(@PathVariable("id") int id) throws Exception {
         System.out.println("CupController.delete");
-        return cupService.delete(id);
+        return new Result(true,cupService.delete(id),"OK");
     }
 
 }

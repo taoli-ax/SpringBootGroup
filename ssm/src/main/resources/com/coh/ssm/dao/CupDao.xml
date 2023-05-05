@@ -6,5 +6,19 @@
     <select id="MapperScan" resultType="int">
         select count(*) from cup
     </select>
+    <select id="Search" parameterType="com.coh.ssm.pojo.Cup" resultType="com.coh.ssm.pojo.Cup">
+        SELECT * FROM cup
+        <where>
+            <if test="brand != null and name != ''">
+                AND (brand LIKE CONCAT('%', #{brand}, '%') OR name LIKE CONCAT('%', #{name}, '%'))
+            </if>
+            <if test="name != null and name != ''">
+                AND name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="brand != null and brand != ''">
+                AND email LIKE CONCAT('%', #{brand}, '%')
+            </if>
+        </where>
+    </select>
 
 </mapper>

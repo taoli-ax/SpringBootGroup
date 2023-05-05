@@ -12,7 +12,7 @@ import java.util.List;
 public interface CupService {
     List<Cup> findAll();
     Cup findById(Cup cup);
-    List<Cup> findByPage(int PageNum,int PageSize);
+    PageInfo <Cup> Search(int PageNum,int PageSize,Cup cup);
     PageInfo <Cup> findByPageInfo(int PageNum, int PageSize);
 
     int update(Cup cup);

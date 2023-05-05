@@ -31,8 +31,15 @@ class SsmApplicationTests {
 
     @Test
     void countMapperConfigScanTest(){
-        int i =cupService.MapperScan();
+        int i =cupDao.MapperScan();
         System.out.println(i);
+    }
+
+    @Test
+    void  Search(){
+        Cup cup=new Cup();
+        cup.setName("tea");
+        cupDao.Search(cup);
     }
 
 }

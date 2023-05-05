@@ -56,6 +56,12 @@ dao层：selectByNameAndPassword(String name,String password)
 版本成功匹配： springBoot 2.7.10,swagger:2.9.2  
 [解决方案连接](https://cloud.tencent.com/developer/article/2013127)
 
+
+### Invalid bound statement (not found)：com.coh.ssm.dao.CupDao.Search
+原因：配置文件中id要跟接口方法名保持一致
+解决：id="Search"
+
+
 ### 答疑
 @RequestBody是适用于异步请求，将数据放在请求体中，格式为json
 
@@ -111,7 +117,7 @@ public interface CupDao{
 }
 ```
 
-- 配置文件写法，除了写好接口`java.com.coh.ssm.CupDao`和Mapper对象的配置文件`resource/com/coh/ssm/CupDao.xml`，注意路径保持一致否则找不到
+- 配置文件写法:除了写好接口`java.com.coh.ssm.CupDao`和Mapper对象的配置文件`resource/com/coh/ssm/CupDao.xml`，注意路径保持一致否则找不到
 - 另外启动类上注解扫描`@MapperScan(basePackages = {"com.coh.ssm.dao"})`
 ```java
 
