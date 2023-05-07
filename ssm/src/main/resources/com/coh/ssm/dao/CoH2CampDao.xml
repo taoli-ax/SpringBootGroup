@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coh.ssm.dao.Coh2CampDao">
+    <select id="getAll" parameterType="com.coh.ssm.pojo.Coh2Camp" resultType="com.coh.ssm.pojo.Coh2Camp">
+        SELECT * FROM CoH2Camp
+        <where>
+            <if test="camp != null and commander_count != ''">
+                AND (camp LIKE CONCAT('%', #{camp}, '%') OR commander_count LIKE CONCAT('%', #{commander_count}, '%'))
+            </if>
+            <if test="camp != null and camp != ''">
+                AND camp LIKE CONCAT('%', #{camp}, '%')
+            </if>
+            <if test="commander_count != null and commander_count != ''">
+                AND commander_count LIKE CONCAT('%', #{commander_count}, '%')
+            </if>
+        </where>
+    </select>
+
+</mapper>
