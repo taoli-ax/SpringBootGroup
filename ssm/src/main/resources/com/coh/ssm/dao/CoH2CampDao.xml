@@ -5,17 +5,28 @@
 <mapper namespace="com.coh.ssm.dao.Coh2CampDao">
     <select id="getAll" parameterType="com.coh.ssm.pojo.Coh2Camp" resultType="com.coh.ssm.pojo.Coh2Camp">
         SELECT * FROM CoH2Camp
-        <where>
-            <if test="camp != null and commander_count != ''">
-                AND (camp LIKE CONCAT('%', #{camp}, '%') OR commander_count LIKE CONCAT('%', #{commander_count}, '%'))
-            </if>
-            <if test="camp != null and camp != ''">
-                AND camp LIKE CONCAT('%', #{camp}, '%')
-            </if>
-            <if test="commander_count != null and commander_count != ''">
-                AND commander_count LIKE CONCAT('%', #{commander_count}, '%')
-            </if>
-        </where>
+<!--        <where>-->
+<!--            <if test="camp != null and commander_count != ''">-->
+<!--                AND (camp LIKE CONCAT('%', #{camp}, '%') OR commander_count LIKE CONCAT('%', #{commander_count}, '%'))-->
+<!--            </if>-->
+<!--            <if test="camp != null and camp != ''">-->
+<!--                AND camp LIKE CONCAT('%', #{camp}, '%')-->
+<!--            </if>-->
+<!--            <if test="commander_count != null and commander_count != ''">-->
+<!--                AND commander_count LIKE CONCAT('%', #{commander_count}, '%')-->
+<!--            </if>-->
+<!--        </where>-->
     </select>
+
+    <update id="updateCamp" parameterType="com.coh.ssm.pojo.Coh2Camp" >
+        update CoH2Camp set camp=#{camp},commander_count=#{commander_count},create_at=#{create_at} where id=#{id}
+    </update>
+
+    <delete id="deleteCamp" parameterType="int">
+        delete from CoH2Camp where id=#{id}
+    </delete>
+    <insert id="addOne" parameterType="com.coh.ssm.pojo.Coh2Camp">
+        insert into CoH2Camp(id,camp,commander_count,create_at) values(null,#{camp},#{commander_count},#{create_at})
+    </insert>
 
 </mapper>

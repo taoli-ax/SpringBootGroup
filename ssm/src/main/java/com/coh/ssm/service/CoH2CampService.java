@@ -11,4 +11,10 @@ import java.util.List;
 public interface CoH2CampService {
     PageInfo<Coh2Camp> getAll(int PageNum,int PageSize,Coh2Camp camp);
 
+    int updateCamp(Coh2Camp coh2Camp);
+
+    int deleteCamp(int id);
+
+    int addOne(Coh2Camp camp);
+
 }

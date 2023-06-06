@@ -27,4 +27,20 @@ public class CoH2CampServiceImpl implements CoH2CampService {
 
     }
 
+    @Override
+    public int updateCamp(Coh2Camp coh2Camp) {
+        return coh2CampDao.updateCamp(coh2Camp);
+    }
+
+    @Override
+    public int deleteCamp(int id) {
+        return coh2CampDao.deleteCamp(id);
+    }
+
+    @Override
+    public int addOne(Coh2Camp camp) {
+        return coh2CampDao.addOne(camp);
+    }
+
+
 }
