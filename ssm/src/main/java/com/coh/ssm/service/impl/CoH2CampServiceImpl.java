@@ -21,8 +21,8 @@ public class CoH2CampServiceImpl implements CoH2CampService {
 
     @Override
     public PageInfo<Coh2Camp> getAll(int PageNum,int PageSize,Coh2Camp camp) {
-        List<Coh2Camp> coh2Camps=coh2CampDao.getAll(camp);
         PageHelper.startPage(PageNum,PageSize);
+        List<Coh2Camp> coh2Camps=coh2CampDao.getAll(camp);
         return new PageInfo<>(coh2Camps);
 
     }
