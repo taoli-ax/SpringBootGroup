@@ -4,8 +4,10 @@ import com.coh.ssm.dao.Coh2CampDao;
 import com.coh.ssm.dao.CupDao;
 import com.coh.ssm.pojo.Coh2Camp;
 import com.coh.ssm.pojo.Cup;
+import com.coh.ssm.pojo.German;
 import com.coh.ssm.service.CoH2CampService;
 import com.coh.ssm.service.CupService;
+import com.coh.ssm.service.GermanCampService;
 import com.github.pagehelper.PageInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ class SsmApplicationTests {
     private CoH2CampService coH2CampService;
     @Autowired
     Coh2CampDao coh2CampDao;
+
+    @Autowired
+    GermanCampService germanCampService;
     @Test
     void contextLoads() {
         List<Cup> cups =cupDao.findAll();
@@ -63,6 +68,11 @@ class SsmApplicationTests {
         camp.setCamp("east");
         PageInfo<Coh2Camp>coh2CampPageInfo=coH2CampService.getAll(1,20,new Coh2Camp());
         System.out.println(coh2CampPageInfo);
+    }
+    @Test
+    void  GermanServiceTest(){
+        List< German> germanList =germanCampService.getAll();
+        System.out.println(germanList);
     }
 
 }
